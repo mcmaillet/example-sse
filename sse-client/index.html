@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo</title>
+</head>
+
+<body>
+    <h1>Server-Sent Events Client</h1>
+    <script>
+        const evtSource = new EventSource("http://localhost:3000");
+
+        evtSource.onmessage = (event) => {
+            const newElement = document.createElement("li");
+            const eventList = document.getElementById("list");
+
+            newElement.textContent = `message: ${event.data}`;
+            eventList.appendChild(newElement);
+        };
+
+    </script>
+    <div id="list"></div>
+</body>
+
+</html>
